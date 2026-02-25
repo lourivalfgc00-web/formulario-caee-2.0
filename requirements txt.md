@@ -1,3 +1,10 @@
 Flask==3.0.2
+
 docxtpl==0.16.7
+
 python-docx==1.1.2
+
+gunicorn
+
+
+
