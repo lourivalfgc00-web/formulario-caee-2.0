@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAEE • Educação Física Adaptada • Gerar Documento</title>
+  <style>
+    body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:24px; max-width:900px}
+    .card{border:1px solid #ddd; border-radius:12px; padding:16px; margin:16px 0}
+    label{font-weight:600}
+    input, textarea, select{width:100%; padding:10px; margin-top:6px; border:1px solid #ccc; border-radius:10px; box-sizing:border-box}
+    textarea{min-height:90px}
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px}
+    .btn{padding:12px 16px; border:0; border-radius:12px; background:#111; color:#fff; font-weight:700; cursor:pointer}
+    .hint{color:#555; font-size:14px}
+  </style>
+</head>
+<body>
+  <h2>Documentos Pedagógicos – Educação Física Adaptada (CAEE)</h2>
+  <p class="hint">Preencha e clique em <b>Gerar Word</b>. O arquivo .docx será baixado automaticamente.</p>
+
+  <form method="POST" action="/gerar">
+    <div class="card">
+      <h3>1) Identificação</h3>
+      <div class="grid">
+        <div>
+          <label>Aluno(a)</label>
+          <input name="ALUNO" required>
+        </div>
+        <div>
+          <label>Turma</label>
+          <input name="TURMA" required>
+        </div>
+        <div>
+          <label>Data de nascimento</label>
+          <input type="date" name="DATA_NASCIMENTO" required>
+        </div>
+        <div>
+          <label>Idade</label>
+          <input name="IDADE" required>
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <label>Síndrome/Deficiência</label>
+        <input name="SINDROME_DEFICIENCIA">
+      </div>
+      <div style="margin-top:12px">
+        <label>Período avaliado</label>
+        <input name="PERIODO_AVALIADO" placeholder="Ex.: 1º bimestre de 2026">
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>2) Participação nas atividades</h3>
+      <label>Selecione uma opção</label>
+      <select name="PARTICIPACAO" required>
+        <option value="">— selecione —</option>
+        <option value="autonomia">Participa com autonomia</option>
+        <option value="apoio">Participa com apoio</option>
+        <option value="parcial">Participa parcialmente</option>
+        <option value="resistencia">Demonstra resistência inicial</option>
+      </select>
+      <div style="margin-top:12px">
+        <label>Descritivo</label>
+        <textarea name="DESCRITIVO_1" placeholder="Escreva aqui..."></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>3) Desenvolvimento motor</h3>
+      <div class="grid">
+        <div><label>Coordenação motora ampla</label><input name="COORD_MOTORA_AMPLA"></div>
+        <div><label>Equilíbrio</label><input name="EQUILIBRIO"></div>
+        <div><label>Deslocamento</label><input name="DESLOCAMENTO"></div>
+        <div><label>Força e controle corporal</label><input name="FORCA_CONTROLE"></div>
+      </div>
+      <div style="margin-top:12px">
+        <label>Descritivo</label>
+        <textarea name="DESCRITIVO_2"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>4) Autonomia e iniciativa</h3>
+      <label>Selecione uma opção</label>
+      <select name="AUTONOMIA" required>
+        <option value="">— selecione —</option>
+        <option value="alta">Alta</option>
+        <option value="media">Média</option>
+        <option value="desenvolvimento">Em desenvolvimento</option>
+      </select>
+      <div style="margin-top:12px">
+        <label>Descritivo</label>
+        <textarea name="DESCRITIVO_3"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>5) Socialização e interação</h3>
+      <div class="grid">
+        <div><label>Interação com colegas</label><input name="INTERACAO_COLEGAS"></div>
+        <div><label>Interação com professor</label><input name="INTERACAO_PROFESSOR"></div>
+      </div>
+      <div style="margin-top:12px">
+        <label>Descritivo</label>
+        <textarea name="DESCRITIVO_4"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>6) Aspectos emocionais e comportamentais</h3>
+      <div class="grid">
+        <div><label>Autorregulação</label><input name="AUTORREGULACAO"></div>
+        <div><label>Resposta aos estímulos</label><input name="RESPOSTA_ESTIMULOS"></div>
+      </div>
+      <div style="margin-top:12px">
+        <label>Descritivo</label>
+        <textarea name="DESCRITIVO_5"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>7) Observações gerais</h3>
+      <textarea name="OBSERVACOES_GERAIS"></textarea>
+    </div>
+
+    <div class="card">
+      <h3>Relatório descritivo (bimestral/semestral)</h3>
+      <label>Período</label>
+      <input name="PERIODO_RELATORIO" placeholder="Ex.: 2º bimestre de 2026">
+      <div class="grid" style="margin-top:12px">
+        <div>
+          <label>Aspecto motor</label>
+          <textarea name="ASPECTO_MOTOR"></textarea>
+        </div>
+        <div>
+          <label>Aspecto social</label>
+          <textarea name="ASPECTO_SOCIAL"></textarea>
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <label>Aspecto emocional</label>
+        <textarea name="ASPECTO_EMOCIONAL"></textarea>
+      </div>
+    </div>
+
+    <button class="btn" type="submit">Gerar Word</button>
+  </form>
+</body>
+</html>
